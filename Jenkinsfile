@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.11'
+        }
+    }
 
     stages {
         stage('Clean Workspace') {
@@ -22,7 +26,7 @@ pipeline {
 
         stage('Run Script') {
             steps {
-                sh 'python3 script.py'
+                sh 'python script.py'
             }
         }
     }
